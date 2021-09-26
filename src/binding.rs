@@ -5296,7 +5296,7 @@ extern "C" {
     pub fn dpiStmt_getBindNames(
         stmt: *mut dpiStmt,
         numBindNames: *mut u32,
-        bindNames: *mut *const ::std::os::raw::c_char,
+        bindNames: *mut *const libc::c_char,
         bindNameLengths: *mut u32,
     ) -> ::std::os::raw::c_int;
 }

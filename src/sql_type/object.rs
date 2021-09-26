@@ -193,7 +193,7 @@ impl Collection {
     {
         let oratype = self.objtype.element_oracle_type().unwrap();
         let mut data = unsafe { mem::zeroed() };
-        let mut buf = [0i8; 172]; // DPI_NUMBER_AS_TEXT_CHARS in odpi/src/dpiImpl.h
+        let mut buf = [0 as libc::c_char; 172]; // DPI_NUMBER_AS_TEXT_CHARS in odpi/src/dpiImpl.h
         match oratype {
             &OracleType::Number(_, _) | &OracleType::Float(_) => unsafe {
                 dpiData_setBytes(&mut data, buf.as_mut_ptr(), buf.len() as u32);
@@ -396,7 +396,7 @@ impl Object {
         T: FromSql,
     {
         let mut data = unsafe { mem::zeroed() };
-        let mut buf = [0i8; 172]; // DPI_NUMBER_AS_TEXT_CHARS in odpi/src/dpiImpl.h
+        let mut buf = [0 as libc::c_char; 172]; // DPI_NUMBER_AS_TEXT_CHARS in odpi/src/dpiImpl.h
         match &attr.oratype {
             &OracleType::Number(_, _) | &OracleType::Float(_) => unsafe {
                 dpiData_setBytes(&mut data, buf.as_mut_ptr(), buf.len() as u32);
